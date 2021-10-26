@@ -1,0 +1,41 @@
+<header class="p-3 bg-dark text-white sticky-top">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-center">
+
+    <div class="dropdown show">
+      <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Catégories
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        {% for cat in categorie.getCategory %}
+          <a class="dropdown-item" href="/categorie/{{ cat.id }}">{{ cat }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+      <ul class="nav col-lg-auto mb-2 justify-content-center mb-md-0 me-lg-auto"></ul>
+
+      <div class="col-lg-6 mb-3 mb-lg-0 fw-bold" style="font-size: 24px"><a href="/"><img src="/img/logo.png" style="max-width: 60px"></a></div>
+
+      
+      <div class="dropdown text-end">
+        <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+          <li><a class="dropdown-item" href="/mesannonces">Mes annonces</a></li>
+          <li><a class="dropdown-item" href="/createannonce/new">Créer une annonce</a></li>
+          <li><a class="dropdown-item" href="/profil">Mon Profil</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href={{ logout_path(key = null) }}>Me deconnecter</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

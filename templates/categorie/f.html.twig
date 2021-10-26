@@ -1,0 +1,55 @@
+
+<div class="album py-5 bg-light">
+
+  <div class="container">
+    <div class="row">
+    {% for annonce in annonces %}
+    {# {% if annonce.statut == 1 %} #}
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm" style="max-height: 800px">
+          <img class="card" src="{{ asset('uploads/images/' ~ annonce.image) | imagine_filter('thumb') }}"/>
+          <div class="card-body">
+            <p class="card-text fw-bold" style="margin-bottom: 5px; font-size: 21px">{{ annonce.titre }}</p> 
+    
+            <div class="card-text d-flex justify-content-between">
+              <span class="text-left fw-bolder" style="font-size:15px;">{{ annonce.prix }}€</span>
+              <span style="font-weight: lighter;" class="text-right">#{{ annonce.categorie }}</span>
+            </div>
+            <hr>
+            {% if annonce.description|length < 99 %}
+                <p class="card-text" style="height: 72px">{{ annonce.description }}</p>
+            {% else %}
+                <p class="card-text" style="height: 72px">{{ annonce.description|slice(0, 98) }}...</p>
+            {% endif %}
+            <div class="d-grid">
+                <a class="btn btn-warning" href="/annonce/{{annonce.id}}">Détail</a>
+            </div>
+            <div class="card-text d-flex justify-content-between mt-2 mb-4">
+              <a class="text-left" href="/profil/{{ annonce.fk_user.id }}">{{ annonce.fk_user }}</a>
+             
+            </div>
+            <div class="card-text d-flex justify-content-between">
+              <span style="font-size: 12px;" class="text-left text-muted">{{ annonce.date|date("d M Y - H:i") }}</span>
+              <span style="font-size: 13px;" class="text-right"><i class="fas fa-map-marker-alt"></i> {{ annonce.fkVille }}</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      {# {% endif %} #}
+      {% endfor %}
+      <div class="navigation d-flex justify-content-center mt-5">
+        {{ knp_pagination_render(annonces, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+      </div>
+
+</main>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script>
+		window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')
+	</script>
+</body>

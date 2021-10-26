@@ -1,0 +1,12 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    form_themes: ['bootstrap_4_layout.html.twig']
+    globals:
+        categorie: '@App\Service\Category'
+        mesusers: '@App\Service\Users'
+        mesannonces: '@App\Service\Annonces'
+        mesvilles: '@App\Service\Villes'
+
+when@test:
+    twig:
+        strict_variables: true

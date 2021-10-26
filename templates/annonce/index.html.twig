@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plus d'infos{% endblock %}
+
+{% block body %}
+        <!-- Product section-->
+        
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{ asset('uploads/images/' ~ product.image) }}"/></div>
+                    <div class="col-md-6">
+                        <h1 class="display-5 fw-bolder">{{ product.titre }}</h1>
+                        <div class="fs-5 mb-5">
+                            <span>{{ product.prix }}€</span>
+                            <p class="fw-bolder">{{ product.fk_user }}</p>
+                        </div>
+                            <p class="lead">{{ product.description }}</p>
+                        <div class="d-flex">
+                            <button class="btn btn-outline-dark flex-shrink-0" type="button" data-toggle="collapse" data-target="#contact">
+                                <i class="bi-cart-fill me-1"></i>
+                                Contacter le vendeur
+                            </button>
+                        </div>
+                        <div id="contact" class="collapse">
+                            <br>
+                            <br>
+                            <h5>Téléphone: </h5><p>{{ product.fk_user.coordonnees.tel }}</p>
+                            <h5>Mail: </h5><p>{{ product.fk_user.coordonnees.mail }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related items section-->
+        <section class="py-5 bg-light">
+            <div class="container px-4 px-lg-5 mt-3">
+
+            
+                <h2 class="fw-bolder mb-5">Dans la même catégorie : </h2>
+
+               
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                     {% for anntwig in mesannonces.getAnnonce|slice(0, 7) %}
+                     {% if product.categorie == anntwig.categorie and product.titre != anntwig.titre %}
+              
+                    <div class="col mb-5">
+                   
+                        <div class="card h-100">
+                            <!-- Product image-->
+                             <img class="card" src="{{ asset('uploads/images/' ~ anntwig.image) | imagine_filter('thumb') }}"/>
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{ anntwig.titre }}</h5>
+                                    <!-- Product price-->
+                                    {{ anntwig.prix }}€
+                                </div>
+                           
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/annonce/{{anntwig.id}}">Voir</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                     {% endfor %}
+
+                   
+                </div>
+            </div>
+        </section>
+
+{% endblock %}

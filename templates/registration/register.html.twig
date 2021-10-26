@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creation de votre compte{% endblock %}
+
+{% block body %}
+<div class="container mb-5" style="margin-top:50px">
+    
+    <h1 class="mb-5 text-center">Créez votre compte</h1>
+    
+    {{ form_start(registrationForm) }}
+    
+        <div class="container mb-5">
+            <h2>Identifiants</h2>
+            <div class="row mb-3">
+                <label for="registration_form_pseudo" class="col-sm-2 col-form-label">Pseudo</label>
+                <div class="col-sm-10">
+                    {{ form_row(registrationForm.pseudo) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="registration_form_plainPassword" class="col-sm-2 col-form-label">Mot de passe</label>
+                <div class="col-sm-10">
+                    {{ form_row(registrationForm.plainPassword) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-5">
+            <h2>Coordonnées</h2>
+            <div class="row mb-3">
+                <label for="registration_form_coordonnees_nom" class="col-sm-2 col-form-label">Nom</label>
+                <div class="col-sm-10">
+                    {{ form_row(registrationForm.coordonnees.nom) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="registration_form_coordonnees_prenom" class="col-sm-2 col-form-label">Prénom</label>
+                <div class="col-sm-10">
+                    {{ form_row(registrationForm.coordonnees.prenom) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="registration_form_coordonnees_tel" class="col-sm-2 col-form-label">Téléphone</label>
+                <div class="col-sm-10">
+                    {{ form_row(registrationForm.coordonnees.tel) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="registration_form_coordonnees_mail" class="col-sm-2 col-form-label">Adresse mail</label>
+                <div class="col-sm-10">
+                    {{ form_row(registrationForm.coordonnees.mail) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-5">
+            <h2>Adresse</h2>
+            <div class="row mb-3">
+                <label for="registration_form_coordonnees_tel" class="col-sm-2 col-form-label">Numéro</label>
+                <div class="col-sm-10">
+                    {{ form_row(registrationForm.coordonnees.address.no) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="registration_form_coordonnees_tel" class="col-sm-2 col-form-label">Rue</label>
+                <div class="col-sm-10">
+                    {{ form_row(registrationForm.coordonnees.address.rue) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="registration_form_coordonnees_tel" class="col-sm-2 col-form-label">Ville</label>
+                <div class="col-sm-10">
+                    {{ form_row(registrationForm.coordonnees.address.villes) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-dark " style="">Créer mon compte</button>
+        </div>
+
+    {{ form_end(registrationForm) }}
+</div>
+
+{% endblock %}
+

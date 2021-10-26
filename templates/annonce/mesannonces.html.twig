@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonces{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Mes annonces</h1>
+     {%  for annonce in annonces %}
+    <div class="row">
+        <div class="col-8">
+           
+            <div class="text-justify mt-4 text-uppercase">{{ annonce.titre }}</div>
+            <img class="card mb-4" src="{{ asset('uploads/images/' ~ annonce.image) | imagine_filter('thumb') }}"/>   
+        </div>
+
+        <div class="col-4">
+        
+                <div class="mt-5">{{ annonce.prix }} €</div>
+                {# <div class="mt-4">{{ annonce.image }}</div> #}
+                {# <div class="mt-4"><h5><b>Statut de l'annonce</b></h5>{{ annonce.statut }}</div> #}
+                <div class="mt-4"><h5>Description :</h5>{{ annonce.description }}</div>
+                <div class="mt-4">{{ annonce.date|date }}</div>
+                <a class="btn btn-danger mt-5" href='/mesannonces/{{annonce.id}}/delete' onclick="return confirm('Are you sure you want to delete this item?');">Supprimer</a> <a class="btn btn-warning mt-5" href='/mesannonces/{{annonce.id}}/edit'>Edit</a>
+            
+        </div>
+    
+    </div>
+    {% endfor %}
+    
+
+</div>
+{% endblock %}

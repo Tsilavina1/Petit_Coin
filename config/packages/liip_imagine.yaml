@@ -1,0 +1,25 @@
+liip_imagine:
+  driver: "gd"
+  resolvers:
+    default:
+      web_path: ~
+
+  filter_sets:
+    cache: ~
+
+    # the name of the "filter set"
+    thumb:
+
+      # adjust the image quality to 75%
+      quality: 75
+
+      # list of transformations to apply (the "filters")
+      filters:
+        fixed:
+          width: 410
+          height: 310
+
+        background: 
+          size: [410, 310]
+          position: center
+          color: '#000000'

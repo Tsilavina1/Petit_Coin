@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Profil</h1>
+    <div class="row">
+        <div class="col-4"> <img class="card" src="{{ asset('img/téléchargement.jpg')}}"/>
+            <div class="text-center mt-4">{{ user.coordonnees.nom }}
+             {{ user.coordonnees.prenom }}</div>
+        </div>
+        <div class="col-8">
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-4"><h5><b>Pseudo</b></h5>{{ user.pseudo }}</div>
+                    <div class="mb-4"><h5><b>Telephone</b><h5/>{{ user.coordonnees.tel }}</div>
+                    <div class="mb-4"><h5><b>Mail</b></h5>{{ user.coordonnees.mail }}</div>
+                </div>
+                <div class="col-6">
+                <div class="mb-4"><h5><b>Adresse:</b></h5>{{ user.coordonnees.address.no }} {{ user.coordonnees.address.rue }} {{ user.coordonnees.address.villes[0].nom }} {{ user.coordonnees.address.villes[0].cp }}</div>
+                </div>
+
+            </div>
+            
+            
+        </div>
+    </div>
+    
+
+    {# app.user correspond a la session de l'user connecte #}
+    {% if user == app.user  %}
+    <a class="btn btn-warning" href='/profil/edit'>Modifier mon profil</a>
+    {% endif %}
+</div>
+{% endblock %}
